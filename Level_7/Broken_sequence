@@ -25,3 +25,4 @@ public class BrokenSequence{
 	      return 0; //Sequence not broken
      }
 }
+ 
