@@ -1,0 +1,83 @@
+/*Inside a room, there is a table with a pile of cakes. One of these cakes is filled with poison. 
+*Every turn, we will take cakes from this pile and eat them, leaving the last one to be the poisonous cake. 
+*Whoever eats the poisonous cake will die. The poisonous cake is clearly marked, so you do not have to guess. 
+*Rather you need to rely on your logic to save you.
+*The rules are simple:
+*1)Do not eat the last cake. It's obivious that poisonous cake will be the last to be eaten, so, DON'T EAT THE LAST CAKE. 
+*  Try to make your opponent eat it.
+*2)When it is your turn, you can only take one, two or three cakes. The same rules apply to your opponent on their turn. 
+*  You cannot skip your move, so choose wisely how many cakes to eat. Both opponents will be able to see how many cakes the other eats on each turn.
+*3)You cannot copy your opponent's previous move, likewise they cannot copy yours. 
+*  If your opponent takes one cake, next move you can only choose between two or three. 
+*  If you take three cakes, your opponent can only choose one or two. This doesn't effect the first move, only to subsequent.
+*4)If one of the players has no valid moves (e.g one cake left and previous move was one cake), that player will lose his turn
+*  and be skipped. Then the other player will be forced to eat the last cake. This is the ONLY case of turn skipping.
+*5)You can choose whether or not to go first. This decision is key to victory, so don't hurry, choose wisely!*/
+
+//AI solution with paths:
+public class Player {
+  public Player(int cakes) {
+  }
+  
+	public boolean firstMove(int cakes) {    
+		if(cakes<=2) return false;
+    else if(cakes<6) return true;
+    if(cakes%12==0) return true;
+    else if(cakes%12==1) return true;
+    else if(cakes%12==2) return false;
+    else if(cakes%12==3) return true;
+    else if(cakes%12==4) return true;
+    else if(cakes%12==5) return true;
+    else if(cakes%12==6) return false;
+    else if(cakes%12==7) return true;
+    else if(cakes%12==8) return true;
+    else if(cakes%12==9) return true;
+    else if(cakes%12==10) return false;
+    else if(cakes%12==11) return true;
+		else return false;
+	}
+	
+	public int move(int cakes, int last) {
+	  int eat=1;
+    if(cakes%12==0) eat=1;
+    else if(cakes%12==1)eat=3;
+    else if(cakes%12==2)eat=3;
+    else if(cakes%12==3)eat=1;
+    else if(cakes%12==4){
+      if(last==3)eat=2;
+      else eat=3;
+    }
+    else if(cakes%12==5) eat=3; 
+    else if(cakes%12==6){
+      if(last==3)eat=1;
+      else eat=3;
+    }
+    else if(cakes%12==7)eat=1;
+    else if(cakes%12==8){
+      if(last==2)eat=2;
+      else eat=1;
+      }
+    else if(cakes%12==9)eat=3;
+    else if(cakes%12==10)eat=2;
+    else if(cakes%12==11)eat=1;
+  
+    if(last==eat){
+      if(!(eat==1))eat=1;
+      else eat=2;
+    }
+    return eat;
+	}
+}
+
+//Logic solution:
+public class Player {
+  public Player(int cakes) {}
+  
+  public boolean firstMove(int cakes) {
+    return cakes % 4 != 2 && cakes != 1;
+  }
+  
+  public int move(int cakes, int last) {
+    return cakes % 4 == 3 ? 1 : 3;
+  }
+}
