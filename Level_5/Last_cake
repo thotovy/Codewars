@@ -20,21 +20,21 @@ public class Player {
   }
   
 	public boolean firstMove(int cakes) {    
-		if(cakes<=2) return false;
-    else if(cakes<6) return true;
-    if(cakes%12==0) return true;
-    else if(cakes%12==1) return true;
-    else if(cakes%12==2) return false;
-    else if(cakes%12==3) return true;
-    else if(cakes%12==4) return true;
-    else if(cakes%12==5) return true;
-    else if(cakes%12==6) return false;
-    else if(cakes%12==7) return true;
-    else if(cakes%12==8) return true;
-    else if(cakes%12==9) return true;
-    else if(cakes%12==10) return false;
-    else if(cakes%12==11) return true;
-		else return false;
+           if(cakes<=2) return false;
+           else if(cakes<6) return true;
+           if(cakes%12==0) return true;
+           else if(cakes%12==1) return true;
+           else if(cakes%12==2) return false;
+           else if(cakes%12==3) return true;
+           else if(cakes%12==4) return true;
+           else if(cakes%12==5) return true;
+           else if(cakes%12==6) return false;
+           else if(cakes%12==7) return true;
+           else if(cakes%12==8) return true;
+           else if(cakes%12==9) return true;
+           else if(cakes%12==10) return false;
+           else if(cakes%12==11) return true;
+           else return false;
 	}
 	
 	public int move(int cakes, int last) {
